@@ -1,3 +1,0 @@
-<div class="w-full min-h-[100vh]">
-    <slot />
-</div>

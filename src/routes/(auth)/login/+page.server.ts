@@ -1,3 +1,3 @@
 import { redirect } from "@sveltejs/kit";
 
-export async function load({ cookies }) {}
+export const load = async () => {};

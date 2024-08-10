@@ -3,7 +3,7 @@ import { relations } from "drizzle-orm";
 
 export const user = pgTable("user", {
   id: serial("id").primaryKey(),
-  username: text("username").notNull(),
+  email: text("email").notNull(),
   password: text("password").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
@@ -11,8 +11,7 @@ export const user = pgTable("user", {
 export const todos = pgTable("todos", {
   id: serial("id").primaryKey(),
   userId: serial("userId").notNull(),
-  title: text("title").notNull(),
-  description: text("descrption").notNull(),
+  todo: text("todo").notNull(),
   completed: boolean("completed").notNull().default(false),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
