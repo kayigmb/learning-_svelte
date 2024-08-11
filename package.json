@@ -15,6 +15,7 @@
     "@sveltejs/adapter-auto": "^3.0.0",
     "@sveltejs/kit": "^2.0.0",
     "@sveltejs/vite-plugin-svelte": "^3.0.0",
+    "@types/bcrypt": "^5.0.2",
     "autoprefixer": "^10.4.20",
     "drizzle-kit": "^0.24.0",
     "postcss": "^8.4.41",
@@ -27,12 +28,15 @@
   "type": "module",
   "dependencies": {
     "@neondatabase/serverless": "^0.9.4",
+    "bcrypt": "^5.1.1",
     "bits-ui": "^0.21.13",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.5",
     "drizzle-orm": "^0.33.0",
     "eslint-plugin-svelte": "^2.43.0",
+    "svelte-toasts": "^1.1.2",
     "tailwind-merge": "^2.4.0",
-    "tailwind-variants": "^0.2.1"
+    "tailwind-variants": "^0.2.1",
+    "zod": "^3.23.8"
   }
 }

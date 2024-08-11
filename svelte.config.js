@@ -7,7 +7,8 @@ const config = {
   kit: {
     adapter: adapter(),
     alias: {
-      "@/*": "./path/to/lib/*",
+      $lib: "./src/lib",
+      $components: "./src/components/",
     },
   },
   preprocess: vitePreprocess(),
