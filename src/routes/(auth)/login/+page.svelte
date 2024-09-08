@@ -25,6 +25,8 @@
         <p class="text-red-700">Invalid Username or Password</p>
     {/if}
 
-  <button class="h-[50px] border border-black bg-black text-white rounded-lg text-2xl my-5">Log in</button>
+  <button class="h-[50px] border border-black bg-black text-white rounded-lg text-2xl my-5">
+    Login
+  </button>
   <p>Do you have an account? <a href="/register" class="font-bold text-secondaryBlue">Register</a></p>
 </form>

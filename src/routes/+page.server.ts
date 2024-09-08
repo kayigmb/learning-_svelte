@@ -1,8 +1,15 @@
-import { fail, redirect } from "@sveltejs/kit";
+import { fail, redirect, type Cookies } from "@sveltejs/kit";
 import { z } from "zod";
 
-export async function load({ fetch, cookies }) {
+export async function load({
+  fetch,
+  cookies,
+}: {
+  fetch: any;
+  cookies: Cookies;
+}) {
   const token = cookies.get("userAuth");
+
   if (!token) {
     redirect(307, "/login");
   }
@@ -24,8 +31,8 @@ const validate = z.object({
 });
 
 export const actions = {
-  todo: async ({ request, fetch }) => {
-    const formData = await request.formData();
+  todo: async ({ request, fetch }: { request: Request; fetch: any }) => {
+    const formData: FormData = await request.formData();
     const result = validate.safeParse(Object.fromEntries(formData));
     const todoData = {
       todo: formData.get("todo") ?? "",

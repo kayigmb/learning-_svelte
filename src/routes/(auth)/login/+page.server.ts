@@ -1,4 +1,5 @@
 import { fail, redirect } from "@sveltejs/kit";
+import type { FetchResult } from "vite/runtime";
 import { z } from "zod";
 
 const loginValidation = z.object({
@@ -7,8 +8,8 @@ const loginValidation = z.object({
 });
 
 export const actions = {
-  login: async ({ request, fetch }: { request: Request; fetch: Fetch }) => {
-    const formData = await request.formData();
+  login: async ({ request, fetch }: { request: Request; fetch: any }) => {
+    const formData: FormData = await request.formData();
     const result = loginValidation.safeParse(Object.fromEntries(formData));
     const loginData = {
       email: formData.get("email") ?? "",
@@ -30,8 +31,7 @@ export const actions = {
     });
     if (!response.ok) {
       return fail(400, { ...loginData, failed: true });
-    } else {
-      redirect(307, "/");
     }
+    return redirect(307, "/");
   },
 };

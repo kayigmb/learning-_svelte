@@ -1,6 +1,8 @@
-import { redirect } from "@sveltejs/kit";
+import { type Cookies } from "@sveltejs/kit";
 
-export async function GET({ cookies }) {
+export async function GET({ cookies }: { cookies: Cookies }) {
   cookies.delete("userAuth", { path: "/" });
-  return { success: true };
+  return new Response(JSON.stringify({ message: "Logout Succesfully" }), {
+    status: 200,
+  });
 }

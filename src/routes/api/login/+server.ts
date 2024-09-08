@@ -1,9 +1,16 @@
 import { passwordCompare } from "$lib/helper/encrypt";
 import { db } from "$lib/server/db";
 import { user } from "$lib/server/schema";
+import type { Cookies } from "@sveltejs/kit";
 import { eq } from "drizzle-orm";
 
-export async function POST({ request, cookies }) {
+export async function POST({
+  request,
+  cookies,
+}: {
+  request: Request;
+  cookies: Cookies;
+}) {
   const { email, password } = await request.json();
   const data = await db
     .select()
@@ -22,7 +29,7 @@ export async function POST({ request, cookies }) {
     });
   }
   cookies.set("userAuth", JSON.stringify(data[0]), {
-    maxAge: 60 * 60 * 24 * 7,
+    maxAge: 60 * 60 * 24 * 1,
     path: "/",
   });
   return new Response(JSON.stringify({ message: "Successful sign In" }), {

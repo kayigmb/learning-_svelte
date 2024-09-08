@@ -1,10 +1,9 @@
-<script>
+<script lang="ts">
     import { enhance } from "$app/forms";
     export let form ;
 </script>
 
 <h1 class="text-[50px] font-bold text-center font-sans mt-11">Register</h1>
-
 <form method="POST" class="flex flex-col gap-4 my-5" action="?/register"
     use:enhance>
    <div class="flex flex-col gap-2">
@@ -34,7 +33,7 @@
     {#if form?.failed }
         <p class="text-red-700">{form?.failed}</p>
     {/if}
-    <button class="h-[50px] border border-black bg-black text-white rounded-lg
+    <button class="h-[50px] hover:cursor-pointer border border-black bg-black text-white rounded-lg
         text-2xl my-5">Register</button>
     <p>Already have an account? <a href="/login"
         class="font-bold text-secondaryBlue

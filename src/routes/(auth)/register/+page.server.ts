@@ -7,16 +7,19 @@ const registerValidation = z.object({
   }),
   email: z
     .string()
-    .email({ message: "Enter a valid email" })
-    .min(1, { message: "Email is required" }),
-  password: z.string().min(5, {
-    message: "Password is required and must be more than 5 characters",
-  }),
+    .min(1, { message: "Email is required" })
+    .email({ message: "Enter a valid email" }),
+  password: z
+    .string()
+    .min(1, {
+      message: "Password is required",
+    })
+    .min(5, { message: "Password is too short" }),
 });
 
 export const actions = {
-  register: async ({ request, fetch }) => {
-    const formData = await request.formData();
+  register: async ({ request, fetch }: { request: Request; fetch: any }) => {
+    const formData: FormData = await request.formData();
     const result = registerValidation.safeParse(Object.fromEntries(formData));
 
     const registerData = {

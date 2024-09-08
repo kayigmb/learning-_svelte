@@ -1,12 +1,4 @@
-import {
-  pgTable,
-  uuid,
-  boolean,
-  serial,
-  text,
-  timestamp,
-  integer,
-} from "drizzle-orm/pg-core";
+import { pgTable, uuid, boolean, text, timestamp } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 
 export const user = pgTable("user", {
@@ -24,10 +16,6 @@ export const todos = pgTable("todos", {
   completed: boolean("completed").notNull().default(false),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
-
-export const usersTodosRelations = relations(user, ({ many }) => ({
-  todos: many(todos),
-}));
 
 export const todoUsersRelations = relations(todos, ({ one }) => ({
   user: one(user, {
